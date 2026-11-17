@@ -1,0 +1,6 @@
+name,address,specialty,beds,icu,ambulance,emergency
+Demo City Hospital,Indore,General Medicine,10,3,Yes,Yes
+Demo Heart Hospital,Indore,Cardiology,8,4,Yes,Yes
+Demo Trauma Hospital,Indore,Trauma,5,2,Yes,Yes
+Demo Care Hospital,Indore,General Medicine,0,0,No,Yes
+Demo Medical Center,Indore,Cardiology,6,2,No,Yes

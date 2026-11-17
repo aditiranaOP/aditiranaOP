@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hospital Search Results</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Hospital Search Results</h1>
+
+        <h2>Patient Details</h2>
+
+        <p><b>Name:</b> {{ name }}</p>
+
+        <p><b>Location:</b> {{ location }}</p>
+
+        <p><b>Age:</b> {{ age }}</p>
+
+        <p><b>Symptoms:</b> {{ symptoms }}</p>
+
+        <hr>
+
+        <h2>Emergency Assessment</h2>
+
+        <p>
+            <b>Demo Priority:</b> {{ severity }}
+        </p>
+
+        <p>
+            <b>Suggested Speciality:</b> {{ specialty }}
+        </p>
+
+        {% if severity == "Critical" %}
+
+        <p class="warning">
+            Possible emergency condition.
+            Call 112 immediately. Do not wait for
+            this website's results.
+        </p>
+
+        {% endif %}
+
+        <hr>
+
+        <h2>Recommended Hospitals</h2>
+
+        {% if hospitals %}
+
+            {% for hospital in hospitals %}
+
+            <div class="hospital">
+
+                <h3>{{ hospital.name }}</h3>
+
+                <p>
+                    <b>Address:</b>
+                    {{ hospital.address }}
+                </p>
+
+                <p>
+                    <b>Speciality:</b>
+                    {{ hospital.specialty }}
+                </p>
+
+                <p>
+                    <b>Sample Beds:</b>
+                    {{ hospital.beds }}
+                </p>
+
+                <p>
+                    <b>Sample ICU Beds:</b>
+                    {{ hospital.icu }}
+                </p>
+
+                <p>
+                    <b>Ambulance:</b>
+                    {{ hospital.ambulance }}
+                </p>
+
+                <p>
+                    <b>Recommendation Score:</b>
+                    {{ hospital.score }}
+                </p>
+
+                <a href="{{ hospital.map_link }}"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    View Directions
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>No matching sample hospital is available.</p>
+
+        {% endif %}
+
+        <br>
+
+        <a href="/">Go Back</a>
+
+        <p class="note">
+            Educational demonstration only.
+            Hospital and bed information is sample data,
+            not real-time availability or medical advice.
+        </p>
+
+    </div>
+
+</body>
+</html>
